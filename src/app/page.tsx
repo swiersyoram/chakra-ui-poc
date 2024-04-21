@@ -2,6 +2,8 @@ import { SimpleGrid, Skeleton, Stack } from "@chakra-ui/react";
 import React, { Suspense } from "react";
 import HomePageView from "@/app/components/HomePageView";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 export default async function Home() {
   return (
     <main>

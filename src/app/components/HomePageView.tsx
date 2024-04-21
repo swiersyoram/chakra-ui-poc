@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Alert,
   Button,
   ButtonGroup,
   Card,
@@ -12,6 +13,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import parseJson from "parse-json";
 
 const HomeCard = () => (
   <Card maxW="sm">
@@ -47,20 +49,19 @@ const HomeCard = () => (
   </Card>
 );
 
-const getData = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-  return Response.json("ok");
-};
-
 const HomePageView = async () => {
-  const res = await getData().then((res) => res.json());
-
+  const res = await fetch("http://localhost:3000/api").then((res) =>
+    res.json(),
+  );
   return (
-    <SimpleGrid columns={3} spacing={10}>
-      <HomeCard />
-      <HomeCard />
-      <HomeCard />
-    </SimpleGrid>
+    <>
+      <Alert status="success">{JSON.stringify(res) + " <= from server"}</Alert>
+      <SimpleGrid columns={3} spacing={10} className={"mt-5"}>
+        <HomeCard />
+        <HomeCard />
+        <HomeCard />
+      </SimpleGrid>
+    </>
   );
 };
 
