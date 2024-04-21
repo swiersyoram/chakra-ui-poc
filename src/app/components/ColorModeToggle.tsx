@@ -3,7 +3,7 @@ import { Button, useColorMode } from "@chakra-ui/react";
 
 import React from "react";
 
-const Color = () => {
+const ColorModeToggle = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
@@ -15,4 +15,4 @@ const Color = () => {
   );
 };
 
-export default Color;
+export default ColorModeToggle;

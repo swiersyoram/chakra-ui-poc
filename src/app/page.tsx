@@ -1,12 +1,21 @@
-import { Button, useColorMode } from "@chakra-ui/react";
-import React from "react";
-import Color from "@/app/Color";
+import { SimpleGrid, Skeleton, Stack } from "@chakra-ui/react";
+import React, { Suspense } from "react";
+import HomePageView from "@/app/components/HomePageView";
 
-export default function Home() {
+export default async function Home() {
   return (
-    <div>
-      <Color />
-      <Button>test</Button>
-    </div>
+    <main>
+      <Suspense
+        fallback={
+          <SimpleGrid columns={3} spacing={10} height={400}>
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+          </SimpleGrid>
+        }
+      >
+        <HomePageView />
+      </Suspense>
+    </main>
   );
 }
